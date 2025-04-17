@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conlang Translator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .result {
+      background-color: #fff;
+      padding: 10px;
+      margin-top: 15px;
+      border: 1px solid #ccc;
+      white-space: pre-wrap;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1>Conlang Translator</h1>
+
+  <label for="inputText">Enter Text (English or Conlang):</label>
+  <textarea id="inputText"></textarea>
+
+  <button onclick="translateToConlang()">Translate to Conlang</button>
+  <button onclick="translateToEnglish()">Translate to English</button>
+
+  <div class="result" id="resultBox"></div>
+
+  <script>
+    const dictionary = {
+      // Add words to your conlang here
+      "the": "y",
+      "a": "e",
+      "this": "hen",
+      "that": "tan",
+      "these": "hanes",
+      "those": "hone",
+      "there": "fere",
+      "some": "sam",
+      "none": "nofe",
+      "my": "nei",
+      "all": "anetu",
+      "every": "yeta",
+      "and": "a",
+      "please": "thand",
+      "thanks": "quando",
+      "good": "det",
+      "friend": "faend",
+      "friends": "faendau",
+      "is": "es",
+      "are": "qui",
+      "bad": "bodo",
+      "big": "deito",
+      "small": "senao",
+      "hello": "denlask",
+      "goodbye": "agateu",
+      "reply": "replito",
+      "replied": "repliod",
+      "long": "len",
+      "short": "bako",
+      "fast": "sepid",
+      "slow": "peita",
+      "hot": "tan",
+      "cold": "iec",
+      "new": "nawd",
+      "old": "tinte",
+      "before": "mo",
+      "after": "lat",
+      "when": "atulo",
+      "are": "qui",
+      "welcome": "denlask",
+      "bye": "farno",
+      "goodbye": "dethfarn",
+      "at": "te",
+      "to": "ten",
+      "I": "Ei",
+      "i": "Ei",
+      "me": "pal",
+      "mine": "pon",
+      "you": "man",
+      "your": "mano",
+      "he": "ha",
+      "she": "sah",
+      "it": "et",
+      "we": "ani",
+      "they": "tai",
+      "what": "qatu",
+      "who": "won",
+      "where": "walc",
+      "why": "shon",
+      "how": "heen",
+      "time": "clent",
+      "morning": "moust",
+      "noon": "ust",
+      "afternoon":  "latust",
+      "evening": "vanet",
+      "night": "nout",
+      "twilight": "maur",
+      "second": "seiso",
+      "minute": "manto",
+      "hour": "hura",
+      "day": "dati",
+      "week": "seta",
+      "month": "qutan",
+      "year": "duqton",
+      "dragon": "dagen",
+      "dragons": "dagenau"
+      // ... (add more words as needed)
+    };
+
+    const reverseDictionary = Object.fromEntries(
+      Object.entries(dictionary).map(([key, value]) => [value, key])
+    );
+
+    // Function to preserve punctuation
+    function handlePunctuation(input) {
+      return input.match(/\w+|[^\w\s]+/g); // Capture words and punctuation separately
+    }
+
+    // Translate English to Conlang
+    function translateToConlang() {
+      const inputText = document.getElementById("inputText").value.toLowerCase();
+      const wordsAndPunctuation = handlePunctuation(inputText); // Split into words and punctuation
+      let translatedWords = [];
+
+      wordsAndPunctuation.forEach(word => {
+        if (dictionary[word]) {
+          translatedWords.push(dictionary[word]); // Translate word
+        } else {
+          translatedWords.push(word); // Leave punctuation unchanged
+        }
+      });
+
+      document.getElementById("resultBox").textContent = "Conlang Translation: " + translatedWords.join(' ');
+    }
+
+    // Translate Conlang to English
+    function translateToEnglish() {
+      const inputText = document.getElementById("inputText").value.toLowerCase();
+      const wordsAndPunctuation = handlePunctuation(inputText); // Split into words and punctuation
+      let translatedWords = [];
+
+      wordsAndPunctuation.forEach(word => {
+        if (reverseDictionary[word]) {
+          translatedWords.push(reverseDictionary[word]); // Translate word
+        } else {
+          translatedWords.push(word); // Leave punctuation unchanged
+        }
+      });
+
+      document.getElementById("resultBox").textContent = "English Translation: " + translatedWords.join(' ');
+    }
+  </script>
+
+</body>
+</html>
