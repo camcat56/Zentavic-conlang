@@ -55,10 +55,10 @@
 
   <h1>Zentavic Translator</h1>
 
-  <label for="inputText">Enter Text (English or Conlang):</label>
+  <label for="inputText">Enter Text (English or Zentavic):</label>
   <textarea id="inputText"></textarea>
 
-  <button onclick="translateToConlang()">Translate to Conlang</button>
+  <button onclick="translateToConlang()">Translate to Zentavic</button>
   <button onclick="translateToEnglish()">Translate to English</button>
 
   <div class="result" id="resultBox"></div>
@@ -113,7 +113,6 @@
       "at": "te",
       "to": "ten",
       "I": "Ei",
-      "i": "Ei",
       "me": "pal",
       "mine": "pon",
       "you": "man",
@@ -167,7 +166,29 @@
       "subtract": "nethiv",
       "multiply": "atipley",
       "divide": "disio",
-      "equals": "wapo"
+      "equals": "wapo",
+      "party": "quopal",
+      "fuck": "hing",
+      "fucking": "hindag",
+      "shit": "buse",
+      "love": "corv",
+      "hate": "pwan",
+      "for": "ven",
+      "sake": "dakka",
+      "do": "bu",
+      "know": "sni",
+      "hi": "denlask",
+      "English": "Anglisau",
+      "Portuguese": "Bortuqau",
+      "French": "Fansh",
+      "Spanish": "Espayau",
+      "German": "Deutio",
+      "Italian": "Romsal",
+      "Russian": "Rusyau",
+      "Chinese": "Hainzen",
+      "Japanese": "Hatuni",
+      "Arabic": "Agrib",
+      "Zentavic": "Zencavi",
       // ... (add more words as needed)
     };
 
@@ -194,7 +215,7 @@
         }
       });
 
-      document.getElementById("resultBox").textContent = "Conlang Translation: " + translatedWords.join(' ');
+      document.getElementById("resultBox").textContent = "Zentavic Translation: " + translatedWords.join(' ');
     }
 
     // Translate Conlang to English
